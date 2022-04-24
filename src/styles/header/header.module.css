@@ -1,0 +1,17 @@
+.header {
+    height: 72px;
+    background-color: var(--primary-color);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 1.375rem;
+    height: 100%;
+    padding: 0 2.5rem;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
