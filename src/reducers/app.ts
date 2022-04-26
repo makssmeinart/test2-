@@ -18,6 +18,11 @@ export const appSlice = createSlice({
   },
 });
 
+// Actions
+
+export const setAppStatus = appSlice.actions.setAppStatusAC
+export const setAppError = appSlice.actions.setAppErrorAC
+
 // Reducer
 
 export const appReducer = appSlice.reducer
