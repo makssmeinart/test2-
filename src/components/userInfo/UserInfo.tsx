@@ -1,14 +1,12 @@
 import s from "styles/userInfo/userInfo.module.css";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import {
-  selectError,
-  selectLoading,
-  selectSearchValue,
-  selectUserInfo,
+    selectError,
+    selectSearchValue,
+    selectUserInfo,
 } from "../../select/select";
-import { SearchingUser } from "../searchingUser/SearchingUser";
-import { UserNotFound } from "../userNotFound/UserNotFound";
-import { Loading } from "../loading/Loading";
+import {SearchingUser} from "../searchingUser/SearchingUser";
+import {UserNotFound} from "../userNotFound/UserNotFound";
 import miniUserIcon from "assets/images/icons/miniUserIcon.png";
 import {kFormatter} from "../../utils/numberFormatter";
 
@@ -16,7 +14,6 @@ export const UserInfo = () => {
   const userInfo = useSelector(selectUserInfo);
   const searchValue = useSelector(selectSearchValue);
   const error = useSelector(selectError);
-  const loading = useSelector(selectLoading);
 
   const searchValueEmpty = searchValue.length === 0;
   const userNotFound =
@@ -27,8 +24,6 @@ export const UserInfo = () => {
     <SearchingUser />
   ) : userNotFound ? (
     <UserNotFound />
-  ) : loading === "loading" ? (
-    <Loading />
   ) : searchFoundSomething ? (
     <div className={s.container}>
       <img
@@ -40,11 +35,7 @@ export const UserInfo = () => {
         alt="Avatar"
       />
       <h1 className={s.name}>{userInfo.name}</h1>
-      <a
-        href={userInfo.html_url}
-        target={"_blank"}
-        className={s.username}
-      >
+      <a href={userInfo.html_url} target={"_blank"} className={s.username}>
         {userInfo.login}
       </a>
       <div className={s.followerWrapper}>

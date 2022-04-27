@@ -3,9 +3,9 @@
     top: 72px;
     left: 0;
     display: flex;
+    height: calc(100vh - 72px);
     justify-content: center;
     align-items: center;
-    bottom: -100px;
     width: 100%;
     box-sizing: border-box;
     background-color: white;
