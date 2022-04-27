@@ -1,0 +1,68 @@
+.container {
+  margin-right: 6.125rem;
+}
+
+.avatar {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  margin-bottom: 1.8125rem;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 130%;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: .75rem;
+}
+
+.username {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.followerWrapper {
+  display: flex;
+  gap: 1rem;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #000;
+  margin-top: 1.5625rem;
+}
+
+.followers {
+  display: flex;
+  gap: 7px;
+}
+
+.following {
+  display: flex;
+  gap: 7px;
+}
+
+.miniIcon {
+  height: 24px;
+  width: 24px;
+}
+
+@media only screen and (max-width: 980px) {
+  .container {
+    margin-right: 0;
+    margin-bottom: 5rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .container {
+    margin-bottom: 3rem;
+  }
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+}

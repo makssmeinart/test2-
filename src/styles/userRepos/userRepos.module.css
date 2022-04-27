@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 130%;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 1.8125rem;
+}
+
+.repoItem {
+  padding: 1.5rem 2rem;
+  background: #ffffff;
+  border-radius: 6px;
+}
+.repoItem:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--primary-color);
+  margin: 0;
+  text-decoration: none;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--text-color);
+  margin: 0;
+  padding-top: 1rem;
+}
+
+/* Pagination */
+.paginationContainer {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+.paginationContainer li {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #808080;
+  cursor: pointer;
+}
+.paginationContainer a {
+  padding: 2px 6px;
+}
+.paginationActive {
+  background-color: var(--primary-color);
+  border-radius: 3px;
+  color: var(--secondary-color) !important;
+}
+
+@media only screen and (max-width: 550px) {
+  .paginationContainer {
+    gap: .3em;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .paginationContainer {
+    gap: 0em;
+  }
+}

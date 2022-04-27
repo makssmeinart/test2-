@@ -4,14 +4,17 @@ import { AxiosResponse } from "axios";
 export const userAPI = {
   getUser: ({ username }: GetUserPayloadType) => {
     return instance
-      .get<GetUserPayloadType, AxiosResponse<GetUserResponseType>>(`/users/${username}`)
+      .get<GetUserPayloadType, AxiosResponse<GetUserResponseType>>(
+        `/users/${username}`
+      )
       .then((resp) => resp.data);
   },
-  getRepositories: ({ username }: GetUserPayloadType) => {
+  getRepositories: ({ username, page }: GetReposPayloadType) => {
     return instance
-      .get<GetUserPayloadType, AxiosResponse<GetRepositoriesResponseType>>(
-        `/users/${username}/repos`
-      )
+      .get<
+        Partial<GetUserPayloadType>,
+        AxiosResponse<GetRepositoriesResponseType>
+      >(`/users/${username}/repos`, { params: { page, per_page: 4 } })
       .then((resp) => resp.data);
   },
 };
@@ -21,6 +24,11 @@ export const userAPI = {
 export type GetUserPayloadType = {
   username: string;
 };
+
+export type GetReposPayloadType = {
+  username: string;
+  page: number;
+}
 
 // Auto generated types
 
