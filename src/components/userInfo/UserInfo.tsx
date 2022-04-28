@@ -1,19 +1,22 @@
 import s from "styles/userInfo/userInfo.module.css";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import {
-    selectError,
-    selectSearchValue,
-    selectUserInfo,
+  selectError,
+  selectLoading,
+  selectSearchValue,
+  selectUserInfo,
 } from "../../select/select";
-import {SearchingUser} from "../searchingUser/SearchingUser";
-import {UserNotFound} from "../userNotFound/UserNotFound";
+import { SearchingUser } from "../searchingUser/SearchingUser";
+import { UserNotFound } from "../userNotFound/UserNotFound";
 import miniUserIcon from "assets/images/icons/miniUserIcon.png";
-import {kFormatter} from "../../utils/numberFormatter";
+import { kFormatter } from "../../utils/numberFormatter";
+import { Loading } from "../loading/Loading";
 
 export const UserInfo = () => {
   const userInfo = useSelector(selectUserInfo);
   const searchValue = useSelector(selectSearchValue);
   const error = useSelector(selectError);
+  const loading = useSelector(selectLoading);
 
   const searchValueEmpty = searchValue.length === 0;
   const userNotFound =
@@ -22,6 +25,9 @@ export const UserInfo = () => {
 
   return searchValueEmpty ? (
     <SearchingUser />
+  ) : // I really don't like doing loading this way but with this pagination this is the only way it works
+  loading === "loading" ? (
+    <Loading />
   ) : userNotFound ? (
     <UserNotFound />
   ) : searchFoundSomething ? (

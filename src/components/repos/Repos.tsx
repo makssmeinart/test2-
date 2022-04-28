@@ -19,6 +19,12 @@ export const Repos = () => {
 
   const currentUserLogin = (userInfo && userInfo.login) || "makssmeinart";
 
+  // Pagination
+  const totalPageCount = userInfo && userInfo.public_repos / 4;
+  const totalItemsCount = userInfo && userInfo.public_repos;
+  const totalItemsStart = currentPage * 4 - (4 - 1);
+  const totalItemsEnd = Math.min(totalItemsStart + 4 - 1, totalItemsCount || 10);
+
   useEffect(() => {
     // This state removes 2 requests
     if (isInit) {
@@ -27,8 +33,6 @@ export const Repos = () => {
       setIsInit(true);
     }
   }, [currentPage]);
-
-  const totalPageCount = userInfo && userInfo.public_repos / 4;
 
   const changePageHandler = (value: { selected: number }) => {
     dispatch(changePage(value.selected + 1));
@@ -50,21 +54,30 @@ export const Repos = () => {
             </div>
           ))}
       </div>
-      {/*  Some type of glitch with types on this */}
-      <ReactPaginate
-        //@ts-ignore
-        pageCount={totalPageCount}
-        //@ts-ignore
-        onPageChange={changePageHandler}
-        pageRangeDisplayed={3}
-        breakLabel={""}
-        nextLabel={">"}
-        previousLabel={"<"}
-        //@ts-ignore
-        renderOnZeroPageCount={null}
-        containerClassName={s.paginationContainer}
-        activeClassName={s.paginationActive}
-      />
+      <div className={s.paginationWrapper}>
+        <div className={s.paginationTotalItems}>
+          <span>
+            {totalItemsStart} to {totalItemsEnd}
+          </span>{" "}
+          of <span>{userInfo && userInfo.public_repos} Items</span>
+        </div>
+        {/*  Some type of glitch with types on this */}
+        <ReactPaginate
+          //@ts-ignore
+          pageCount={totalPageCount}
+          //@ts-ignore
+          onPageChange={changePageHandler}
+          pageRangeDisplayed={3}
+          nextLabel={">"}
+          previousLabel={"<"}
+          //@ts-ignore
+          renderOnZeroPageCount={null}
+          containerClassName={s.paginationContainer}
+          //@ts-ignore
+          activeClassName={s.paginationActive}
+          marginPagesDisplayed={1}
+        />
+      </div>
     </div>
   );
 };
